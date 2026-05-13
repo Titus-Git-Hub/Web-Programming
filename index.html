@@ -4,79 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Archive</title>
+    <meta name="description" content="This is the personal Website of Titus Richter">
+    <meta name="author" content="Titus Richter">
+    <title>Titus Richter: CV Webpage</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <h1>Movie Archive</h1>
-        <p>This webpage is going to be a place where you can find the current availability of many movies; so where to watch them.</p>
-        <hr>
+    <header class="hero">
+        <p class="nav">
+            <a href="#about">about me</a> ·
+            <a href="#cv">cv</a> ·
+            <a href="#projects">projects</a> ·
+            <a href="assignment1/index.html">assignment 1</a>
+        </p>
+
+        <h1>Hi, it's Titus here.</h1>
+        <p class="lead">
+            I'm a student at Leuphana University and am currently developing some
+            webprogramming skills. This page is going to develop in the upcoming weeks.
+        </p>
     </header>
 
     <main>
-        <h2>The different platforms</h2>
-        <p>The following streaming services are the ones I want to cover:</p>
-        <ul>
-            <li>Netflix</li>
-            <li>Amazon Prime</li>
-            <li>Disney+</li>
-        </ul>
+        <section id="about" class="section">
+            <h2>About me</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident obcaecati possimus delectus! Cupiditate exercitationem natus labore itaque, accusamus nam ipsa ad hic enim, doloribus, corrupti beatae tenetur distinctio totam repellendus.
+            </p>
+        </section>
 
-        <hr>
+        <section id="cv" class="section">
+            <h2>CV</h2>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque cum vel ullam repellat incidunt illum nihil consectetur nisi est debitis tempore voluptas labore, blanditiis rerum ipsum. Quam quas accusamus cum!
+            </p>
+        </section>
 
-        <h2>The whole sense about this website (background)</h2>
-        <p>
-            The problem nowadays often lies in having all the streaming services mentioned above cover the movies,
-            but in a flexible status. So one day movie <strong>"xyz"</strong> is available on Netflix;
-            the next day it is not anymore, but now on Disney+. Currently the way to go is to open Google and search
-            for "Movie "XYZ" Stream", and you will probably find out where the movie is available.
-        </p>
-        <p>
-            Still, I would like to have the ability to see where a movie is available in one tool,
-            where I can also look for movies to watch. Another idea is the ability to make a watchlist yourself or
-            with your friends, so you have a tool where you can find your watchlist and directly see if a movie is
-            currently available on one of the services or not.
-        </p>
-        <p>
-            I'm not 100% sure if this is going to be my final project, but I could imagine it; as you can read
-            in my explanation above, this could have a real use for me, to save a watchlist with my friends and
-            directly see which of these movies are available. I can also imagine including a rating feature, but
-            I will have to see (as this tool also somehow exists, but I have not made use of it myself, so I can
-            try to make my own one).
-        </p>
-
-        <hr>
-
-        <h2>Implementations I expect</h2>
-        <p>These are the features I have in mind:</p>
-        <ol>
-            <li>Watchlist feature</li>
-            <li>Loading the movies through an API</li>
-            <li>Rating that should be saved by a server</li>
-            <li>Availability (on which platform)</li>
-            <li>Either all movies are already available and the user can add them to a watchlist,
-                or a prepared form where you put movie details in</li>
-            <li>A direct link to the YouTube trailer of the movie</li>
-            <li>Either just a rating (1 to 5 stars) or also comments</li>
-        </ol>
-
-        <hr> 
-
-        <h2>Trailer demo</h2>
-        <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/YoHD9XEInc0"
-            title="YouTube video player"
-            frameborder="0"
-            allowfullscreen></iframe>
-
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, porro? Quaerat asperiores animi perspiciatis. Quisquam repellendus, reiciendis facilis nisi recusandae possimus odio, repudiandae id non expedita ex ipsam alias quasi!
+            </p>
+        </section>
     </main>
 
     <footer>
-        <hr>
-        <small>Movie Archive footer</small>
+        <p>
+            Footer:
+            <br>
+            contact information: <a href="mailto:titus.richter@stud.leuphana.de">titus.richter@stud.leuphana.de</a>
+        </p>
     </footer>
-
 </body>
 
 </html>
