@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150" role="img" aria-label="titus">
+  <text x="130" y="92"
+        text-anchor="middle"
+        font-family="'Nunito', 'Quicksand', 'Inter', system-ui, sans-serif"
+        font-size="86" font-weight="700" letter-spacing="2"
+        fill="#1a1a1a">titus</text>
+  <path d="M 38 120 Q 130 148 222 120"
+        fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>
+</svg>
