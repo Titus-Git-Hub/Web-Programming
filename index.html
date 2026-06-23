@@ -8,42 +8,49 @@
     <meta name="author" content="Titus Richter">
     <title>Titus Richter: CV Webpage</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fraunces:wght@400&display=swap" rel="stylesheet">
+    <!-- The Font Awesome icon library is used for styling icons across the page -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="index.html" class="brand">
-            <img src="images/logo.svg" alt="Titus" class="logo">
-        </a>
         <ul class="nav-links">
-            <li><a href="#about">about me</a></li>
-            <li><a href="#cv">cv</a></li>
-            <li><a href="#projects">projects</a></li>
+            <li><a href="about-me.html">About</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <a href="index.html" class="badge">Werkstudent bei Homepage Helden &rarr;</a>
+        <button id="myButton" class="badge">Working Student for Homepage Helden &rarr;</button>
+        <div class="display_text hideP">
+            <div class="modal-box">
+                <button id="closeBtn">✕</button>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsa consectetur, quo ex repellendus quam voluptatem, architecto natus officiis vero beatae voluptates ut. Quis nam eos quasi omnis minus saepe.</p>
+                <a href="working-student.html">Read more →</a>
+            </div>
+        </div>
         <h1>Hi, it's Titus here.</h1>
-        <p class="lead">
-            I'm a student at Leuphana University and am currently developing some
-            webprogramming skills. This page is going to develop in the upcoming weeks.
-        </p>
+        <p>I'm a student at Leuphana University and am currently developing some webprogramming skills. This page is going to develop in the upcoming weeks.</p>
     </header>
 
     <main>
         <section id="about" class="section">
             <h2>About me</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident obcaecati possimus delectus! Cupiditate exercitationem natus labore itaque, accusamus nam ipsa ad hic enim, doloribus, corrupti beatae tenetur distinctio totam repellendus.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             </p>
 
             <div class="text-image-row">
                 <div class="col">
-                    <div class="img-placeholder"></div>
+                    <div class="img-placeholder">
+                        <p>Placeholder</p>
+                        <p>Good Picture TBD</p>
+                    </div>
                 </div>
                 <div class="col">
                     <h3>This is the text side</h3>
@@ -53,6 +60,7 @@
                     <p>
                         Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
                     </p>
+                    <a href="about-me.html">Read more →</a>
                 </div>
             </div>
         </section>
@@ -67,25 +75,84 @@
         <section id="projects" class="section">
             <h2>Projects</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, porro? Quaerat asperiores animi perspiciatis. Quisquam repellendus, reiciendis facilis nisi recusandae possimus odio, repudiandae id non expedita ex ipsam alias quasi!
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             </p>
 
-            <ul class="toolbar">
-                <li><a href="#">Project 1</a></li>
-                <li><a href="#">Project 2</a></li>
-                <li><a href="#">Project 3</a></li>
-                <li><a href="#">All Projects</a></li>
-            </ul>
+            <div class="text-image-row">
+                <div class="col">
+                    <div class="img-placeholder project-img">
+                        <p>Placeholder</p>
+                        <p>Project Image</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Project 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <a href="projects.html">Read more →</a>
+                </div>
+            </div>
+
+            <div class="text-image-row reverse">
+                <div class="col">
+                    <h3>Project 2</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <a href="projects.html">Read more →</a>
+                </div>
+                <div class="col">
+                    <div class="img-placeholder project-img">
+                        <p>Placeholder</p>
+                        <p>Project Image</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-image-row">
+                <div class="col">
+                    <div class="img-placeholder project-img">
+                        <p>Placeholder</p>
+                        <p>Project Image</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Project 3</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <a href="projects.html">Read more →</a>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <a href="projects.html">All Projects</a>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>
-            Footer:
-            <br>
-            contact information: <a href="mailto:titus.richter@stud.leuphana.de">titus.richter@stud.leuphana.de</a>
-        </p>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="about-me.html"><i class="fa-solid fa-user"></i> About</a>
+                <a href="cv.html"><i class="fa-solid fa-file"></i> CV</a>
+                <a href="projects.html"><i class="fa-solid fa-folder"></i> Projects</a>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <a href="https://www.instagram.com/t.rchtr_/"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Titus-Git-Hub"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="xxx"><i class="fa-solid fa-envelope"></i> Email</a>
+            </div>
+            <div class="footer-col">
+                <h4>More</h4>
+                <a href="working-student.html"><i class="fa-solid fa-briefcase"></i> Working Student</a>
+                <a href="university.html"><i class="fa-solid fa-graduation-cap"></i> University</a>
+                <a href="blog.html"><i class="fa-solid fa-pen"></i> Blog</a>
+            </div>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>

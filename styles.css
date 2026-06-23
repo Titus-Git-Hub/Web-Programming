@@ -7,7 +7,6 @@ body {
     padding: 0;
 }
 
-
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -20,13 +19,6 @@ h2 {
     margin-bottom: 1rem;
 }
 
-
-.lead {
-    font-size: 1.125rem;
-    color: #555;
-}
-
-
 a {
     color: #0066cc;
     text-decoration: none;
@@ -36,59 +28,51 @@ a:hover {
     text-decoration: underline;
 }
 
-
 .hero {
-    padding: 2rem;
+    padding: 4rem 2rem;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    position: relative;  
+    position: relative;
+    text-align: center;
 }
 
 .badge {
-    position: absolute;   
-    top: 16px;           
-    right: 16px;         
+    position: absolute;
+    top: 40px;
+    right: 16px;
     background: #1a1a1a;
     color: #fff;
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0.4rem 0.9rem;
-    border-radius: 999px; 
+    border-radius: 999px;
     text-decoration: none;
+    cursor: pointer;
+    transition: background 0.5s ease, transform 0.3s ease;
 }
 
 .badge:hover {
     background: #333;
+    transform: translateY(-3px);
 }
-
 
 /* ---- Claude was used a help-tool in cowork to optimize my css from here ---- */
 /* ---- The focus should lay on my own skills and not AI. But AI is being used partly for support and optimization. ---- */
 .navbar {
-    display: flex;                  
-    justify-content: space-between; 
-    align-items: center;            
-    padding: 1.5rem 3rem;           
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    position: sticky;              
-    top: 0;                       
-}
-
-.brand {
-    display: flex;       
-    align-items: center;
-}
-
-.logo {
-    height: 44px;         
-    width: auto;
+    position: sticky;
+    top: 0;
 }
 
 .nav-links {
-    display: flex;        
-    gap: 2.5rem;          
-    list-style: none;    
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -104,18 +88,18 @@ a:hover {
 }
 
 .toolbar {
-    display: flex;            
-    justify-content: center;  
-    gap: 1rem;               
-    flex-wrap: wrap;          
-    list-style: none;         
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style: none;
     margin: 2rem 0;
     padding: 0;
 }
 
 .toolbar a {
     display: block;
-    padding: 0.75rem 2rem;    
+    padding: 0.75rem 2rem;
     background: #e8e8e8;
     border-radius: 4px;
     color: #444;
@@ -129,19 +113,26 @@ a:hover {
 }
 
 .text-image-row {
-    display: flex;        
-    gap: 3rem;            
+    display: flex;
+    gap: 3rem;
     margin-top: 1.5rem;
-    align-items: center;  
+    align-items: center;
 }
 
-.text-image-row .col:first-child { flex: 1; }   
-.text-image-row .col:last-child  { flex: 2; }   
+.text-image-row .col { flex: 1; }
 
 .img-placeholder {
     width: 100%;
-    aspect-ratio: 4 / 3;   
-    background: #d9d9d9;    
+    aspect-ratio: 3 / 4;
+    background: #d9d9d9;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-size: 0.875rem;
+    max-height: 220px;
 }
 
 .text-image-row h3 {
@@ -154,15 +145,108 @@ a:hover {
     }
 }
 
-
 .section {
     padding: 2rem;
     border-bottom: 1px solid #ddd;
 }
 
+.footer {
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+}
 
-footer {
-    padding: 2rem;
-    color: #777;
+.footer-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-col h4 {
+    color: #222;
     font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+    color: #555;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.footer-col a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.display_text {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hideP {
+    display: none;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+
+#closeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.project-img {
+    transition: transform 0.3s ease;
+}
+
+.project-img:hover {
+    transform: scale(1.05);
+}
+
+/*
+The following code was generated with AI assistance to handle responsive layout behaviour for the text-image rows on smaller screen sizes.
+*/
+
+@media (max-width: 640px) {
+    .text-image-row {
+        flex-direction: column;
+    }
+
+    .text-image-row.reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 50;
+    font-family: 'Fraunces', serif;
 }
