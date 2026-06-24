@@ -250,3 +250,50 @@ The following code was generated with AI assistance to handle responsive layout 
     font-weight: 50;
     font-family: 'Fraunces', serif;
 }
+
+/*
+The following code was generated with AI assistance to achieve the hover effect for the blog post cards, inspired by an external design reference.
+*/
+
+.blog-grid {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.blog-card {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.blog-img {
+    max-height: none;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-img {
+    transform: scale(1.05);
+}
+
+.blog-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: 0;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+    transform: translateY(8px);
+}
+
+.blog-card:hover .blog-title {
+    transform: translateY(0);
+}
