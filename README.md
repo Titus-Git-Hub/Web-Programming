@@ -1,9 +1,11 @@
 # Web-Programming
 
 ## Live page
+
 GitHub Pages: https://titus-git-hub.github.io/Web-Programming/
 
 ## Folder structure
+
 - `index.html` – homepage (consistently updated throughout the Assignments 2 + 3 + 5)
 - `styles.css` – main stylesheet (consistently updated throughout the Assignments 2 + 3 + 5)
 - `script.js` – main JS file (was added with Assignment 5 and is now also being updated throughout the entire development process)
@@ -15,13 +17,20 @@ GitHub Pages: https://titus-git-hub.github.io/Web-Programming/
 - `university.html` – university page (was added (no content yet) with Assignment 5 and is now also being updated throughout the entire development process)
 
 ## Inspirations
+
 **(1)** <br>
 https://www.reddit.com/r/webdev/comments/172sisr/examples_of_strong_portfoliocvpersonalblog/
 
 -> https://www.tomhirst.com/reads/ (for the page footer / icons)<br>
--> https://www.approachabledesign.co/articles/personal-website/ (for the page header) 
+-> https://www.approachabledesign.co/articles/personal-website/ (for the page header)
 
 **(2)** <br>
 https://www.homepage-helden.de (for the blogpost design)
 
 **(3)** More to come...
+
+## Helpfull Settings in VS Code
+
+- "Live Preview" Extension -> Local server to directly see changes made.
+- "Prettier - Code formatter" Extension -> Formats the code correctly right after each saving process (with the correct Settings)
+- "Editor: Word Wrap" on in the Settings -> All lines of Code are being displayed on the screen
