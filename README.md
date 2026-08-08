@@ -27,7 +27,48 @@ https://www.reddit.com/r/webdev/comments/172sisr/examples_of_strong_portfoliocvp
 **(2)** <br>
 https://www.homepage-helden.de (for the blogpost design)
 
-**(3)** More to come...
+**(3)** Design / Animation Inspiration
+https://www.originkit.dev/components/interactive-grid?from=%2F&preset=base
+https://www.originkit.dev/components/link-preview?from=%2F&preset=base
+https://www.originkit.dev/components/link-preview?from=%2F&preset=base
+
+https://reactbits.dev/text-animations/depth-text
+https://reactbits.dev/text-animations/text-loop
+https://reactbits.dev/text-animations/circular-text
+https://reactbits.dev/text-animations/text-pressure
+https://reactbits.dev/text-animations/curved-loop
+https://reactbits.dev/text-animations/gradient-text
+https://reactbits.dev/text-animations/ascii-text
+https://reactbits.dev/animations/scroll-expand
+https://reactbits.dev/animations/logo-loop
+https://reactbits.dev/animations/click-spark
+https://reactbits.dev/components/depth-carousel
+https://reactbits.dev/components/accordion-gallery
+https://reactbits.dev/components/specular-button
+https://reactbits.dev/components/option-wheel
+https://reactbits.dev/components/curved-input
+https://reactbits.dev/components/bubble-menu
+https://reactbits.dev/components/magic-bento
+https://reactbits.dev/components/card-nav
+https://reactbits.dev/components/pill-nav
+https://reactbits.dev/components/tilted-card
+https://reactbits.dev/components/folder
+https://reactbits.dev/components/staggered-menu
+https://reactbits.dev/components/profile-card
+https://reactbits.dev/components/gooey-nav
+https://reactbits.dev/components/carousel
+https://reactbits.dev/components/spotlight-card
+https://reactbits.dev/components/border-glow
+https://reactbits.dev/components/flowing-menu
+https://reactbits.dev/components/infinite-menu
+
+https://delphi.tools
+
+https://reactbits.dev/backgrounds/letter-glitch
+
+https://www.cleanpng.com
+
+**(4)** More to come...
 
 ## Helpfull Settings in VS Code
 
