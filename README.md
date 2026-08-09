@@ -27,46 +27,46 @@ https://www.reddit.com/r/webdev/comments/172sisr/examples_of_strong_portfoliocvp
 **(2)** <br>
 https://www.homepage-helden.de (for the blogpost design)
 
-**(3)** Design / Animation Inspiration
-https://www.originkit.dev/components/interactive-grid?from=%2F&preset=base
-https://www.originkit.dev/components/link-preview?from=%2F&preset=base
-https://www.originkit.dev/components/link-preview?from=%2F&preset=base
+**(3)** Design / Animation Inspiration<br>
+https://www.originkit.dev/components/interactive-grid?from=%2F&preset=base<br>
+https://www.originkit.dev/components/link-preview?from=%2F&preset=base<br>
+https://www.originkit.dev/components/live-chat?from=%2F&preset=base<br>
 
-https://reactbits.dev/text-animations/depth-text
-https://reactbits.dev/text-animations/text-loop
-https://reactbits.dev/text-animations/circular-text
-https://reactbits.dev/text-animations/text-pressure
-https://reactbits.dev/text-animations/curved-loop
-https://reactbits.dev/text-animations/gradient-text
-https://reactbits.dev/text-animations/ascii-text
-https://reactbits.dev/animations/scroll-expand
-https://reactbits.dev/animations/logo-loop
-https://reactbits.dev/animations/click-spark
-https://reactbits.dev/components/depth-carousel
-https://reactbits.dev/components/accordion-gallery
-https://reactbits.dev/components/specular-button
-https://reactbits.dev/components/option-wheel
-https://reactbits.dev/components/curved-input
-https://reactbits.dev/components/bubble-menu
-https://reactbits.dev/components/magic-bento
-https://reactbits.dev/components/card-nav
-https://reactbits.dev/components/pill-nav
-https://reactbits.dev/components/tilted-card
-https://reactbits.dev/components/folder
-https://reactbits.dev/components/staggered-menu
-https://reactbits.dev/components/profile-card
-https://reactbits.dev/components/gooey-nav
-https://reactbits.dev/components/carousel
-https://reactbits.dev/components/spotlight-card
-https://reactbits.dev/components/border-glow
-https://reactbits.dev/components/flowing-menu
-https://reactbits.dev/components/infinite-menu
+https://reactbits.dev/text-animations/depth-text<br>
+https://reactbits.dev/text-animations/text-loop<br>
+https://reactbits.dev/text-animations/circular-text<br>
+https://reactbits.dev/text-animations/text-pressure<br>
+https://reactbits.dev/text-animations/curved-loop<br>
+https://reactbits.dev/text-animations/gradient-text<br>
+https://reactbits.dev/text-animations/ascii-text<br>
+https://reactbits.dev/animations/scroll-expand<br>
+https://reactbits.dev/animations/logo-loop<br>
+https://reactbits.dev/animations/click-spark<br>
+https://reactbits.dev/components/depth-carousel<br>
+https://reactbits.dev/components/accordion-gallery<br>
+https://reactbits.dev/components/specular-button<br>
+https://reactbits.dev/components/option-wheel<br>
+https://reactbits.dev/components/curved-input<br>
+https://reactbits.dev/components/bubble-menu<br>
+https://reactbits.dev/components/magic-bento<br>
+https://reactbits.dev/components/card-nav<br>
+https://reactbits.dev/components/pill-nav<br>
+https://reactbits.dev/components/tilted-card<br>
+https://reactbits.dev/components/folder<br>
+https://reactbits.dev/components/staggered-menu<br>
+https://reactbits.dev/components/profile-card<br>
+https://reactbits.dev/components/gooey-nav<br>
+https://reactbits.dev/components/carousel<br>
+https://reactbits.dev/components/spotlight-card<br>
+https://reactbits.dev/components/border-glow<br>
+https://reactbits.dev/components/flowing-menu<br>
+https://reactbits.dev/components/infinite-menu<br>
 
-https://delphi.tools
+https://delphi.tools<br>
 
-https://reactbits.dev/backgrounds/letter-glitch
+https://reactbits.dev/backgrounds/letter-glitch<br>
 
-https://www.cleanpng.com
+https://www.cleanpng.com<br>
 
 **(4)** More to come...
 
