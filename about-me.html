@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-text="about.pageTitle">Über mich – Titus Richter</title>
+    <meta name="description" content="Lebenslauf und Kontakt von Titus Richter.">
+
+    <!-- Same Google Fonts and Font Awesome  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <!-- Back to the Home Page -->
+        <a class="back-link" href="index.html" data-text="nav.backToMap">‹ Karte</a>
+        <span class="navbar-title" data-text="about.title">Über mich</span>
+        <!-- the language Selector -->
+        <div class="segment">
+            <button class="lang-button active" type="button" data-lang="de">DE</button>
+            <button class="lang-button" type="button" data-lang="en">EN</button>
+        </div>
+    </header>
+
+    <!-- Map at the top, as shown in the “Titus Richter” pop-up on the home page -->
+    <div class="map-strip">
+        <!-- the drawn map -->
+        <svg viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice">
+            <rect width="1440" height="280" fill="#efeff4"/>
+            <ellipse cx="260" cy="60" rx="300" ry="96" fill="#e4efd8"/>
+            <ellipse cx="1180" cy="236" rx="280" ry="92" fill="#e4efd8"/>
+            <path d="M-20,130 C300,150 520,104 860,126 C1080,140 1240,168 1460,156" stroke="#dceaf6" stroke-width="20" fill="none"/>
+            <g fill="#e4e4ea">
+                <rect x="420" y="160" width="130" height="70" rx="6"/>
+                <rect x="900" y="30" width="120" height="66" rx="6"/>
+                <rect x="1060" y="36" width="96" height="60" rx="6"/>
+                <rect x="220" y="184" width="110" height="64" rx="6"/>
+            </g>
+            <g stroke="#ffffff" fill="none" stroke-linecap="round">
+                <path d="M-20,196 L1460,176" stroke-width="16"/>
+                <path d="M600,-20 C618,100 590,200 612,300" stroke-width="16"/>
+                <path d="M1100,-20 C1086,100 1110,200 1094,300" stroke-width="11"/>
+                <path d="M340,-20 L360,300" stroke-width="9"/>
+            </g>
+        </svg>
+        <span class="map-source" data-text="me.mapSource">Lüneburg</span>
+        <!-- the green marker with my photo -->
+        <div class="location green">
+            <span class="location-area"></span>
+            <span class="location-pulse"></span>
+            <span class="location-pulse delayed"></span>
+            <span class="photo"><img src="images/profile.jpg" alt="Titus Richter"></span>
+        </div>
+    </div>
+
+    <!-- the white sheet -->
+    <div class="sheet">
+        <div class="grip"></div>
+        <!-- Main heading of the page -->
+        <h1>Titus Richter</h1>
+        <p class="address" data-text="me.address">Lüneburg<br>Student &amp; Werkstudent</p>
+        <div class="meta">
+            <span data-text="me.updated">zuletzt aktualisiert: September 2026</span>
+            <span class="pill" data-text="me.status">erreichbar</span>
+        </div>
+    </div>
+
+        <!-- The anchor links -->
+    <div class="tabs">
+        <nav>
+            <a class="tab active" href="#ueber" data-text="about.title">Über mich</a>
+            <a class="tab" href="#lebenslauf" data-text="me.cv">Lebenslauf</a>
+            <a class="tab" href="#kontakt" data-text="me.contact">Kontakt</a>
+        </nav>
+    </div>
+
+    <main class="content">
+
+        <!-- ===================== About me ===================== -->
+        <section id="ueber">
+            <!-- the small gray heading above the text -->
+            <h2 class="group-title"><span data-text="about.current">Aktueller Stand</span></h2>
+
+            <div class="card message">
+                <div class="message-header">
+                    <span class="message-avatar"><img src="images/profile.jpg" alt="Titus Richter"></span>
+                    <div>
+                        <span class="message-name">Titus Richter</span>
+                        <span class="message-place">Lüneburg · Hamburg</span>
+                    </div>
+                    <span class="message-date" data-text="about.date">September 2026</span>
+                </div>
+
+                <p data-text="about.text1">Gerade pendle ich zwischen zwei Orten. In Lüneburg studiere ich an der Leuphana Digitale Medien mit Wirtschaftspsychologie im Nebenfach und seit Kurzem zusätzlich International Business Administration &amp; Entrepreneurship.</p>
+                <p data-text="about.text2">In Hamburg arbeite ich seit 2025 als Werkstudent in einer Webdesign-Agentur und bin dort für SEO zuständig. Mit eigenen Kunden, die ich monatlich betreue.</p>
+                <p data-text="about.text3">In den nächsten Monaten will ich beides enger zusammenbringen: das, was ich im Studium über Technik, Medien, Daten, Menschen und KI lerne, mit dem, was ich in der Agentur jeden Tag praktisch mache. Deshalb bin ich offen für Praktika, die mich neue passende Bereiche erkunden lassen, in denen ich mein aktuelles Wissen testen und weiter steigern kann.</p>
+            </div>
+        </section>
+
+
+        <!-- ===================== CV ===================== -->
+        <section id="lebenslauf">
+            <h2 class="group-title"><span data-text="me.cv">Lebenslauf</span></h2>
+
+            <div class="card timeline">
+
+                <!-- Current stations have the class "current" and a pulsing ring -->
+                <div class="station current">
+                    <span class="station-pin">
+                        <span class="station-pulse"></span>
+                        <span class="station-dot bg-orange"><i class="fa-solid fa-graduation-cap"></i></span>
+                    </span>
+                    <div>
+                        <span class="station-title">International Business Administration &amp; Entrepreneurship</span>
+                        <span class="station-place" data-text="about.ibaePlace">Zusatzstudium · Leuphana Lüneburg</span>
+                    </div>
+                    <span class="station-date" data-text="about.since2026">2026 – heute</span>
+                </div>
+
+                <!-- same structure -->
+                <div class="station current">
+                    <span class="station-pin">
+                        <span class="station-pulse"></span>
+                        <span class="station-dot bg-green"><i class="fa-solid fa-briefcase"></i></span>
+                    </span>
+                    <div>
+                        <span class="station-title" data-text="about.workTitle">Werkstudent</span>
+                        <span class="station-place" data-text="about.workPlace">Webdesign-Agentur · Hamburg</span>
+                    </div>
+                    <span class="station-date" data-text="about.since2025">2025 – heute</span>
+                </div>
+
+                <div class="station current">
+                    <span class="station-pin">
+                        <span class="station-pulse"></span>
+                        <span class="station-dot bg-blue"><i class="fa-solid fa-graduation-cap"></i></span>
+                    </span>
+                    <div>
+                        <span class="station-title" data-text="uni.mainName">Digitale Medien &amp; Wirtschaftspsychologie</span>
+                        <span class="station-place">Bachelor · Leuphana Lüneburg</span>
+                    </div>
+                    <span class="station-date" data-text="about.since2024">2024 – heute</span>
+                </div>
+
+                <!-- Completed stages: no “current,” no pulse ring, gray dot (bg-gray) -->
+                <div class="station">
+                    <span class="station-pin"><span class="station-dot bg-gray"><i class="fa-solid fa-award"></i></span></span>
+                    <div>
+                        <span class="station-title" data-text="about.abitur">Abitur</span>
+                        <span class="station-place">Johann-Heinrich-Voß-Gymnasium · Eutin</span>
+                    </div>
+                    <span class="station-date">2024</span>
+                </div>
+
+                <div class="station">
+                    <span class="station-pin"><span class="station-dot bg-gray"><i class="fa-solid fa-fish"></i></span></span>
+                    <div>
+                        <span class="station-title" data-text="about.marketTitle">Nebenjob auf dem Wochenmarkt</span>
+                        <span class="station-place" data-text="about.marketPlace">Fischverkauf</span>
+                    </div>
+                    <span class="station-date">2023 – 2024</span>
+                </div>
+
+                <div class="station">
+                    <span class="station-pin"><span class="station-dot bg-gray"><i class="fa-solid fa-school"></i></span></span>
+                    <div>
+                        <span class="station-title" data-text="about.secondary">Weiterführende Schule</span>
+                        <span class="station-place">Johann-Heinrich-Voß-Gymnasium · Eutin</span>
+                    </div>
+                    <span class="station-date">2016 – 2024</span>
+                </div>
+
+                <div class="station">
+                    <span class="station-pin"><span class="station-dot bg-gray"><i class="fa-solid fa-pencil"></i></span></span>
+                    <div>
+                        <span class="station-title" data-text="about.primary">Grundschule</span>
+                        <span class="station-place" data-text="about.primaryPlace">Waldorfschule · Lensahn</span>
+                    </div>
+                    <span class="station-date">2011 – 2016</span>
+                </div>
+
+                <div class="station">
+                    <span class="station-pin"><span class="station-dot bg-gray"><i class="fa-solid fa-cake-candles"></i></span></span>
+                    <div>
+                        <span class="station-title" data-text="about.born">Geboren in Eutin</span>
+                        <span class="station-place">01.10.2004</span>
+                    </div>
+                    <span class="station-date">2004</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ===================== Contact ===================== -->
+        <section id="kontakt">
+            <h2 class="group-title"><span data-text="me.contact">Kontakt</span></h2>
+
+            <!-- mailto opens the email program -->
+            <a class="contact-mail" href="mailto:titusrichter@icloud.com">
+                <span class="icon bg-blue"><i class="fa-solid fa-envelope"></i></span>
+                <span class="tile-body">
+                    <span class="tile-title" data-text="about.mail">E-Mail</span>
+                    <span class="tile-text">titusrichter@icloud.com</span>
+                </span>
+                <!-- Right arrow, Font-Awesome-Icon -->
+                <span class="chevron"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+
+            <div class="contact-grid">
+                <a class="contact-tile" href="https://de.linkedin.com/">
+                    <span class="icon bg-linkedin"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <span class="tile-title">LinkedIn</span>
+                    <span class="tile-text" data-text="about.linkedin">Vernetzen</span>
+                </a>
+
+                <!-- target="_blank" opens a new tab -->
+                <a class="contact-tile" href="https://github.com/Titus-Git-Hub" target="_blank">
+                    <span class="icon bg-dark"><i class="fa-brands fa-github"></i></span>
+                    <span class="tile-title">GitHub</span>
+                    <span class="tile-text" data-text="about.github">Projekte ansehen</span>
+                </a>
+
+                <a class="contact-tile" href="https://www.instagram.com/t.rchtr_/" target="_blank">
+                    <span class="icon bg-instagram"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="tile-title">Instagram</span>
+                    <span class="tile-text" data-text="about.instagram">Folgen</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript again in the end -->
+    <script src="script.js"></script>
+</body>
+</html>

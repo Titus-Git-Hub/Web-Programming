@@ -1,299 +1,1400 @@
+/* =========================================================
+   My design is inspired by Apple's "Find My" app.
+   ========================================================= */
+
+
+/* ---------- Variables ---------- */
+
+/* :root as the highest element of the page (html).
+   colors and fonts are defined once and then used later with var(--name) so that it keeps uniform on the whole page
+   I asked Claude to take the colors straight from Apple (iOS). */
+:root {
+    --background: #f2f2f7;      /* light gray page background */
+    --surface: #ffffff;         /* the white surfaces as the pop ups */
+    --fill: #e5e5ea;            /* gray areas */
+    --line: #d8d8dd;            /* for a dividing line */
+
+    --text: #000000;            /* the normal text */
+    --text-muted: #8a8a8e;      /* light gray text (for additional information) */
+    --text-secondary: #636366;  /* other gray Text for addresses and locations for example*/
+
+    --blue: #007aff;            /* iOS-blue: for the Links, and those active pulsing animations */
+    --green: #34c759;           /* iOS-green: green text also needed for the status on the pop up and the pulse */
+    --green-text: #248a3d;      /* green text also needed for the status on the pop up */
+    --orange: #ff9500;
+    --purple: #af52de;
+    --gray: #8e8e93;            /* color for the previous positions listed on the resume */
+    --dark: #1c1c1e;            /* a different black tone for the GitHub icon for example*/
+
+    /* Fonts from Google Fonts */
+    --font-display: "Syne", sans-serif;           /* big heading */
+    --font-body: "Manrope", sans-serif;           /* body text */
+    --font-mono: "JetBrains Mono", monospace;     /* small technical labels */
+}
+
+
+/* ---------- Base ---------- */
+
+/* box-sizing: border-box = padding and border are included in the width calculation. Otherwise, an element with width: 100% plus padding will be wider than the available space. */
+* {
+    box-sizing: border-box;
+}
+
+/* Default settings for the entire page */
 body {
-    font-family: 'Inter', sans-serif;
-    color: #222;
-    background-color: #fafafa;
-    line-height: 1.6;
+    margin: 0;                              /* To remove the browser's default margin */
+    font-family: var(--font-body);          /* Used variable from above */
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* Links use the text color of the parent element instead of the standard blue */
+a {
+    color: inherit;
+}
+
+/* hideP for the pop ups and as learned in our sessions. !important here necessary otherwise it would be overwritten */
+.hideP {
+    display: none !important;
+}
+
+/* Helper classes for icon background colors. */
+.bg-blue      { background-color: var(--blue); }
+.bg-green     { background-color: var(--green); }
+.bg-orange    { background-color: var(--orange); }
+.bg-purple    { background-color: var(--purple); }
+.bg-gray      { background-color: var(--gray); }
+.bg-dark      { background-color: var(--dark); }
+.bg-linkedin  { background-color: #0a66c2; }   /* The official LinkedIn-blue */
+.bg-instagram { background-color: #e1306c; }   /* The Instagram-pink */
+
+
+/* =========================================================
+   Shared components
+   ========================================================= */
+
+/* ---------- Language switch (segmented control) ---------- */
+
+/* I wanted the DE/EN switch to look like an iOS segment switch, and Claude helped me with it  */
+.segment {
+    display: inline-flex;                   /* the box being no wider than its contents */
+    background-color: var(--fill);
+    border-radius: 9px;                     /* the rounded corners as learned */
+    padding: 2px;
+}
+
+.lang-button {
+    border: none;                           /* Remove the default frame from <button> */
+    background: none;                       /* Remove “Standard Gray” from <button> */
+    font-family: var(--font-mono);
+    font-size: 0.66rem;                     /* rem = relative to the base font size (16px) */
+    padding: 0.3rem 0.65rem;                /* top/bottom 0.3rem, left/right 0.65rem */
+    border-radius: 7px;
+    color: var(--text-secondary);
+    cursor: pointer;                        /* Hand cursor effect when hovering over an element */
+}
+
+.lang-button.active {
+    background-color: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);  
+}
+
+
+/* ---------- Status pill ---------- */
+
+/* Styling of the green “pill” as in “reachable” or “employed” */
+.pill {
+    display: inline-flex;
+    align-items: center;                  
+    gap: 0.35rem;                    
+    background-color: rgba(52, 199, 89, 0.16);   /* the green from --green, but with only 16% (0.16) opacity */
+    color: var(--green-text);
+    border-radius: 999px;                
+    padding: 0.2rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+}
+
+/* The green dot on the left in the pill */
+.pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;                     /* 50% = circle as learned in the sessions */
+    background-color: var(--green);
+}
+
+
+/* ---------- Grip (the small bar on top of a sheet) ---------- */
+
+/* The small gray bar at the top of the white pages, just like in iOS. Purely visual as already mentioned in the index file */
+.grip {
+    width: 38px;
+    height: 5px;
+    border-radius: 99px;
+    background-color: #d1d1d6;
+    margin: 0 auto 0.9rem;            
+}
+
+
+/* ---------- Round icons ---------- */
+
+/* the round colored circles containing a Font Awesome icon. The color is applied from above via the bg classes */
+.icon {
+    flex: none;                             /* no shrinking in a flex row */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;                         
+    place-items: center;                  
+    color: #ffffff;                       
+    font-size: 0.85rem;                   
+}
+
+
+/* ---------- Texts in tiles ---------- */
+
+.tile-title {
+    font-weight: 600;                      
+    font-size: 0.9rem;
+    line-height: 1.25;                     
+}
+
+.tile-text {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+.tile-body {
+    flex: 1;                                /* takes up all the available space in the line */
+    display: flex;
+    flex-direction: column;                 /* for title and text being one below the other */
+}
+
+
+/* ---------- Location dot with pulsing ring ---------- */
+
+/* I really wanted to include the “location marker” as a detail, just like in the “Find My app”: a blue (or green) circle with a light-colored area and two rings that spread out. So I asked Claude how to implement this one as well */
+.location {
+    position: absolute;             
+    left: 50%;                             
+    top: 44%;
+    transform: translate(-50%, -50%);       
+}
+
+/* the light-colored area around the dot */
+.location-area {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 140px;
+    height: 140px;
+    margin: -70px 0 0 -70px;                /* half the width/height negative equals to centered (and seems to be a different method than translate) */
+    border-radius: 50%;
+    background-color: rgba(0, 122, 255, 0.14);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+}
+
+/* the ring that spreads out and fades */
+.location-pulse {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 52px;
+    height: 52px;
+    margin: -26px 0 0 -26px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    opacity: 0;                             /* it is invisible until the animation starts */
+    animation: pulse 3.2s ease-out infinite;   /* Settings: Name, Duration, Progress, Endless */
+}
+
+/* The second ring with the same animation, starts 1.6s later */
+.location-pulse.delayed {
+    animation: pulse 3.2s ease-out 1.6s infinite;
+}
+
+/* the dot with the icon */
+.location-dot {
+    position: relative;                     /* is thus above the field and the rings */
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    background-color: var(--blue);
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 16px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* Green variant: If .green is applied to the parent element, the field and rings turn green. */
+.green .location-area {
+    background-color: rgba(52, 199, 89, 0.16);
+    border-color: rgba(52, 199, 89, 0.32);
+}
+
+.green .location-pulse {
+    background-color: var(--green);
+}
+
+/* The animation sequence */
+@keyframes pulse {
+    0%   { transform: scale(0.5); opacity: 0.38; }
+    80%  { opacity: 0; }
+    100% { transform: scale(3.1); opacity: 0; }
+}
+
+
+/* ---------- Profile photo ---------- */
+
+.photo {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    overflow: hidden;                       /* crops the image to a round shape */
+    box-shadow: 0 6px 18px -5px rgba(0, 0, 0, 0.4), 0 0 0 3px var(--blue); 
+    transition: transform 0.26s;            /* enlarge effect on hover */
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   Sub pages
+   ========================================================= */
+
+/* ---------- Navigation bar ---------- */
+
+.navbar {
+    position: sticky;                  
+    top: 0;
+    z-index: 20;                            
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.75rem 1.3rem;
+    background-color: rgba(242, 242, 247, 0.86);  
+    backdrop-filter: blur(14px);           
+    border-bottom: 1px solid var(--line);
+}
+
+/* "‹ Map" top left */
+.back-link {
+    color: var(--blue);
+    text-decoration: none;                  /* Remove the underscore */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* the button that looks like a link ("‹ Map") shown in the pop ups */
+.text-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;                   /* buttons usually have their own font */
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+/* the title in the center of the bar */
+.navbar-title {
+    margin: 0 auto;                         
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+
+/* ---------- Map strip on top ---------- */
+
+.map-strip {
+    position: relative;                     
+    height: 280px;
+    overflow: hidden;                       
+}
+
+.map-strip svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* The small sign reading “Hamburg” / “Lüneburg” in the lower right corner */
+.map-source {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 1.6rem;
+    padding: 0.12rem 0.42rem;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.75);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    color: #6f7b85;
+}
+
+
+/* ---------- Sheet with name and address ---------- */
+
+/* The white sheet placed over the map (like the detail sheet in “Wo-Ist app”) */
+.sheet {
+    position: relative;
+    z-index: 2;                             /* is located above the map*/
+    max-width: 760px;                    
+    margin: -26px auto 0;                 
+    padding: 0.7rem 1.4rem 1.2rem;
+    border-radius: 20px 20px 0 0;           /* only the top corners are rounded */
+    background-color: var(--surface);
+}
+
+.sheet h1 {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.9rem;
+}
+
+/* the address under the title */
+.address {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+/* The line with “since 2025” and the pill */
+.meta {
+    display: flex;
+    flex-wrap: wrap;                    
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.55rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+    .sheet h1 {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ---------- Tabs ---------- */
+
+/* jumps to the sections via anchors, as already noted in the index file */
+.tabs {
+    position: sticky;                  
+    top: 53px;                              
+    z-index: 15;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0.2rem 1.4rem 0.9rem;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--line);
+}
+
+.tabs nav {
+    display: flex;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: var(--fill);
+}
+
+.tab {
+    flex: 1;                                /* all tabs are the same width */
+    padding: 0.45rem 0;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.tab.active {
+    background-color: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ---------- Content ---------- */
+
+/* the middle column with the content */
+.content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.6rem 1.4rem 3rem;
+}
+
+section {
+    margin-bottom: 2.2rem;
+    scroll-margin-top: 120px;             
+}
+
+.group-title {
+    display: flex;
+    justify-content: space-between;         
+    margin: 0 0 0.55rem 0.3rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;                  
+    text-transform: uppercase;              
+    color: var(--text-muted);
+}
+
+.group-title span + span {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.card {
+    border-radius: 14px;
+    background-color: var(--surface);
+}
+
+
+/* ---------- Text card ---------- */
+
+.text-card {
+    padding: 1.2rem 1.3rem 1.3rem;
+}
+
+.text-card h2,
+.text-card h3 {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+}
+
+.text-card h2 {
+    font-size: 1.1rem;
+}
+
+.text-card h3 {
+    font-size: 1rem;
+}
+
+.text-card p {
+    margin: 0 0 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.text-card p:last-child {
+    margin-bottom: 0;
+}
+
+.text-block + .text-block {
+    margin-top: 1.3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+}
+
+
+/* =========================================================
+   About me
+   ========================================================= */
+
+/* ---------- Current status as a message ---------- */
+
+.message {
+    padding: 1rem 1.2rem 1.2rem;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.8rem;
+}
+
+.message-avatar {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--blue);
+}
+
+.message-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.message-place {
+    display: block;                         
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.message-date {
+    margin-left: auto;                     
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.message p {
+    margin: 0 0 0.85rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ---------- CV timeline ---------- */
+
+/* I wanted the resume to be laid out as a timeline: a dot on the left, text in the center, a date on the right, and a vertical line between them */
+.timeline {
+    padding: 0.4rem 1.1rem;
+}
+
+.station {
+    position: relative;                    
+    display: grid;                         
+    grid-template-columns: 38px 1fr auto;   
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 0;
+}
+
+.station::before {
+    content: "";
+    position: absolute;
+    left: 18px;                            
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--fill);
+}
+
+.station:first-child::before {
+    top: 50%;
+}
+
+.station:last-child::before {
+    bottom: 50%;
+}
+
+.station-pin {
+    position: relative;
+    width: 38px;
+    height: 38px;
+}
+
+.station-dot {
+    position: relative;                     /* is above the pulse ring */
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-size: 0.78rem;
+    box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.3);
+}
+
+.station-pulse {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--green);
+    opacity: 0;
+    animation: pulse-small 3.2s ease-out infinite;
+}
+
+/* I didn't want the three stations to flash at the same time */
+.station:nth-child(2) .station-pulse { animation: pulse-small 3.2s ease-out 1.05s infinite; }
+.station:nth-child(3) .station-pulse { animation: pulse-small 3.2s ease-out 2.1s infinite; }
+
+.station.current .station-dot {
+    box-shadow: 0 0 0 5px rgba(52, 199, 89, 0.22), 0 3px 10px -3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse-small {
+    0%   { transform: scale(0.8); opacity: 0.45; }
+    80%  { opacity: 0; }
+    100% { transform: scale(2.1); opacity: 0; }
+}
+
+.station-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.station-place {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.station-description {
+    margin: 0.3rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.station-date {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    color: var(--text-muted);
+    white-space: nowrap;                    
+}
+
+/* the date for the current positions on my resume in green */
+.station.current .station-date {
+    color: var(--green-text);
+}
+
+
+/* ---------- Contact ---------- */
+
+.contact-mail {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.7rem;
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    background-color: var(--surface);
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.7rem;
+}
+
+.contact-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    background-color: var(--surface);
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+/* The tile rises 2px when you hover over it, just as we learned in the sessions and have applied ourselves. */
+.contact-mail:hover,
+.contact-tile:hover {
+    transform: translateY(-2px);
+}
+
+/* refers to the right arrow in the email line */
+.chevron {
+    color: #c7c7cc;
+}
+
+@media (max-width: 600px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   Popups (used on the working student page and the start page)
+   ========================================================= */
+
+.display_text {
+    position: fixed;                        /* stays fixed in the window, even when scrolling */
+    top: 0;                                 
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;                            /* above all else */
+    display: flex;
+    align-items: center;                 
+    justify-content: center;             
+    padding: 1.4rem;
+    background-color: rgba(0, 0, 0, 0.28);  
+}
+
+/* Animation so that the pop-up slides in from the bottom when opened */
+@keyframes popup-in {
+    from { transform: translateY(14px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    flex: none;
+    margin-left: auto;                     
+    width: 29px;
+    height: 29px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--fill);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: var(--line);
+}
+
+
+/* =========================================================
+   Working student
+   ========================================================= */
+
+/* A list of tasks with blue dots that match the design, instead of the standard bullet points */
+.task-list {
+    list-style: none;                      
     margin: 0;
     padding: 0;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+.task-list li {
+    position: relative;                    
+    padding: 0.45rem 0 0.45rem 1.2rem;     
+    font-size: 0.93rem;
+    line-height: 1.55;
 }
 
-h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+.task-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.95rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--blue);
 }
 
-a {
-    color: #0066cc;
-    text-decoration: none;
+
+/* ---------- Tool tiles ---------- */
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 0.7rem;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-.hero {
-    padding: 4rem 2rem;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+.tool {
     position: relative;
+    z-index: 0;                            
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: none;
+    background: none;
+    font-family: inherit;
+    color: inherit;
+    text-align: left;                      
+    cursor: pointer;
+}
+
+/* The white box is apparently a pseudo-element, so it can grow without making the text blurry */
+.tool::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;                           
+    border-radius: 14px;
+    border: 1px solid transparent;          
+    background-color: var(--surface);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;  
+}
+
+.tool:hover::before,
+.tool:focus::before {
+    transform: translateY(-3px) scale(1.04);
+    border-color: var(--blue);
+    box-shadow: 0 14px 26px -18px rgba(0, 122, 255, 0.7);
+}
+
+/* A colored square with an abbreviation (Se, GSC …) or an icon. You could also add the corresponding images here. I might get around to that in the future. */
+.glyph {
+    flex: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.78rem;
+    transition: opacity 0.2s;             
+}
+
+/* A bigger version in the pop up */
+.glyph.large {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    font-size: 0.9rem;
+}
+
+.tool-body {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.2s;
+}
+
+.tool-name {
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.tool-category {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+}
+
+/* the “Learn More ›” effect only visible while hovering over it */
+.tool-hint {
+    font-size: 0.7rem;
+    color: var(--blue);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tool:hover .tool-hint,
+.tool:focus .tool-hint {
+    opacity: 1;
+}
+
+/* I wanted the rest of the tiles to be dimmed while you're on a tile, so it's clearer which tile you're currently on... */
+.tool-grid.dimmed .glyph,
+.tool-grid.dimmed .tool-body {
+    opacity: 0.4;
+}
+
+/* that's for the one being shown / hovered on */
+.tool-grid.dimmed .tool:hover .glyph,
+.tool-grid.dimmed .tool:hover .tool-body {
+    opacity: 1;
+}
+
+/* Holds the description text, only shown inside the popup */
+.tool-text {
+    display: none;                          
+}
+
+
+/* ---------- Tool popup ---------- */
+
+.modal-box {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 0.7rem 1.3rem 1.4rem;
+    border-radius: 20px;
+    background-color: var(--surface);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6);
+    animation: popup-in 0.28s ease-out;     
+}
+
+.modal-top {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.9rem;
+}
+
+.modal-box h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.modal-box p {
+    margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   University
+   ========================================================= */
+
+/* the distance between the two program cards */
+.study {
+    margin-bottom: 0.9rem;
+}
+
+.study-header {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1.1rem 1.3rem;
+}
+
+.study-icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+.study-header h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.study-type {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+}
+
+.study-date {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--green-text);
+    white-space: nowrap;
+}
+
+.live-dot {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--green);
+}
+
+/* Just as the icons pulse in the CV, I wanted to represent that here using additional dots. */
+.live-dot::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--green);
+    animation: pulse-dot 2.4s ease-out infinite;
+}
+
+@keyframes pulse-dot {
+    from { transform: scale(1); opacity: 0.5; }
+    to   { transform: scale(3.2); opacity: 0; }
+}
+
+.facts {
+    border-top: 1px solid var(--line);
+}
+
+.fact {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.62rem 1.3rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.88rem;
+}
+
+.fact span:first-child {
+    color: var(--text-secondary);
+}
+
+.fact span:last-child {
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .study-header {
+        flex-wrap: wrap;
+    }
+
+    .study-date {
+        margin-left: 0;
+    }
+}
+
+
+/* =========================================================
+   Start page: the map
+   ========================================================= */
+
+/* One shouldn't be able to scroll on the home page, which is why it's set up that way */
+.map-page {
+    overflow: hidden;
+}
+
+.map {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* One of Claude's SVG drawings as the background; it took a while at first to figure out what to do with Claude and come up with something good. */
+.map-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* "WHERE IS TITUS?" up left */
+.map-question {
+    position: absolute;
+    left: 1.9rem;
+    top: 1.6rem;
+    z-index: 3;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+}
+
+/* DE/EN up right */
+.map-language {
+    position: absolute;
+    right: 1.9rem;
+    top: 1.4rem;
+    z-index: 3;
+}
+
+/* North arrow and scale at the bottom left and right: common rules ... */
+.map-north,
+.map-scale {
+    position: absolute;
+    bottom: 1.6rem;
+    z-index: 3;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+/* what differs (positioning) */
+.map-north {
+    left: 1.9rem;
     text-align: center;
 }
 
-.badge {
-    position: absolute;
-    top: 40px;
-    right: 16px;
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.4rem 0.9rem;
-    border-radius: 999px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.5s ease, transform 0.3s ease;
+/* what differs (positioning) */
+.map-scale {
+    right: 1.9rem;
+    text-align: right;
 }
 
-.badge:hover {
-    background: #333;
-    transform: translateY(-3px);
-}
-
-/* ---- Claude was used a help-tool in cowork to optimize my css from here ---- */
-/* ---- The focus should lay on my own skills and not AI. But AI is being used partly for support and optimization. ---- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    color: #222;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: #000;
-    text-decoration: none;
-}
-
-.toolbar {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 2rem 0;
-    padding: 0;
-}
-
-.toolbar a {
+.map-scale::after {
+    content: "";
     display: block;
-    padding: 0.75rem 2rem;
-    background: #e8e8e8;
-    border-radius: 4px;
-    color: #444;
-    text-decoration: none;
-    font-weight: 500;
+    width: 70px;
+    height: 5px;
+    margin-top: 0.25rem;
+    border: 1px solid var(--text-muted);
+    border-top: none;
 }
 
-.toolbar a:hover {
-    background: #ddd;
-    text-decoration: none;
-}
 
-.text-image-row {
-    display: flex;
-    gap: 3rem;
-    margin-top: 1.5rem;
-    align-items: center;
-}
+/* ---------- Places on the map ---------- */
 
-.text-image-row .col { flex: 1; }
-
-.img-placeholder {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    background: #d9d9d9;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #999;
-    font-size: 0.875rem;
-    max-height: 220px;
-}
-
-.text-image-row h3 {
-    margin-bottom: 0.75rem;
-}
-
-@media (max-width: 640px) {
-    .text-image-row {
-        flex-direction: column;
-    }
-}
-
-.section {
-    padding: 2rem;
-    border-bottom: 1px solid #ddd;
-}
-
-.footer {
-    padding: 3rem 2rem;
-    margin-top: 2rem;
-}
-
-.footer-grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.footer-col h4 {
-    color: #222;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-}
-
-.footer-col a {
-    color: #555;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
-
-.footer-col a:hover {
-    color: #000;
-    text-decoration: none;
-}
-
-.display_text {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hideP {
-    display: none;
-}
-
-.modal-box {
-    background: #fff;
-    border-radius: 16px;
-    padding: 2rem;
-    max-width: 400px;
-    width: 90%;
-    position: relative;
-}
-
-#closeBtn {
+.place {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    z-index: 4;
+    transform: translate(-50%, -50%);       
     background: none;
     border: none;
-    font-size: 1rem;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    text-align: center;
     cursor: pointer;
 }
 
-.project-img {
-    transition: transform 0.3s ease;
+/* location of the two towns on the map, expressed as a percentage */
+#place-work {
+    left: 24%;
+    top: 30%;
 }
 
-.project-img:hover {
-    transform: scale(1.05);
+#place-uni {
+    left: 80%;
+    top: 62%;
 }
 
-/*
-The following code was generated with AI assistance to handle responsive layout behaviour for the text-image rows on smaller screen sizes.
-*/
-
-@media (max-width: 640px) {
-    .text-image-row {
-        flex-direction: column;
-    }
-
-    .text-image-row.reverse {
-        flex-direction: column-reverse;
-    }
+/* the round circles with icons */
+.place-circle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background-color: var(--fill);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    box-shadow: 0 4px 12px -3px rgba(0, 0, 0, 0.32);
+    transition: transform 0.26s, background-color 0.22s, color 0.22s;
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 50;
-    font-family: 'Fraunces', serif;
+/* "[CITY]" small on top of the name */
+.place-city {
+    display: block;                         
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
 }
 
-/*
-The following code was generated with AI assistance to achieve the hover effect for the blog post cards, inspired by an external design reference.
-*/
-
-.blog-grid {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+.place-name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.95rem;
 }
 
-.blog-card {
-    flex: 1;
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
+/* the hover effect, turning blue and getting bigger */
+.place:hover .place-circle,
+.place:focus .place-circle {
+    transform: scale(1.13);
+    background-color: var(--blue);
+    color: #ffffff;
 }
 
-.blog-img {
-    max-height: none;
-    aspect-ratio: 4 / 3;
-    border-radius: 0;
-    transition: transform 0.3s ease;
-}
 
-.blog-card:hover .blog-img {
-    transform: scale(1.05);
-}
+/* ---------- Me in the middle ---------- */
 
-.blog-title {
+.me {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    margin: 0;
-    font-size: 1rem;
-    transition: transform 0.3s ease;
-    transform: translateY(8px);
+    left: 52%;
+    top: 46%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
 }
 
-.blog-card:hover .blog-title {
-    transform: translateY(0);
+/* a larger field and larger rings than in .location */
+.me .location-area {
+    width: 186px;
+    height: 186px;
+    margin: -93px 0 0 -93px;
+}
+
+.me .location-pulse {
+    width: 64px;
+    height: 64px;
+    margin: -32px 0 0 -32px;
+}
+
+/* the picture as a button */
+.me-button {
+    position: relative;
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* the picture gets 8% (1.08) bigger while hovering */
+.me-button:hover .photo {
+    transform: scale(1.08);
+}
+
+/* Name tag below the photo and, at the same time, the <h1> of the home page */
+.me-label {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 13px);                 
+    transform: translateX(-50%);           
+    margin: 0;
+    white-space: nowrap;
+}
+
+.me-label button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--surface);
+    border: none;
+    border-radius: 999px;
+    padding: 0.42rem 0.9rem;
+    box-shadow: 0 6px 18px -12px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 400;                     
+    color: var(--text);
+    cursor: pointer;
+}
+
+/* the green dot in front of "Titus Richter · on the move" */
+.me-label button::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--green);
+}
+
+
+/* ---------- Popup window with map ---------- */
+
+.popup {
+    width: 100%;
+    max-width: 660px;
+    overflow: hidden;                     
+    border-radius: 18px;
+    background-color: var(--background);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6);
+    animation: popup-in 0.28s ease-out;
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.popup .map-strip {
+    height: 210px;
+}
+
+.popup .location {
+    top: 50%;
+}
+
+/* a smaller white sheet, as all those smaller than the ones used for the subpages */
+.popup-sheet {
+    position: relative;
+    margin-top: -16px;
+    padding: 0.65rem 1.3rem 1.4rem;
+    border-radius: 18px 18px 0 0;
+    background-color: var(--surface);
+}
+
+.popup-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.popup-top h2 {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+
+/* ---------- Tiles in the popup ---------- */
+
+.tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin-top: 1.1rem;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.95rem 1rem;
+    border-radius: 12px;
+    background-color: var(--background);
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.tile:hover {
+    background-color: var(--fill);
+    transform: translateY(-2px);
+}
+
+.tile.wide {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.7rem;
+}
+
+
+/* ---------- Switch ---------- */
+
+/* the green iOS switch, as mentioned this is just decoration and has no function */
+.switch {
+    flex: none;
+    position: relative;
+    width: 46px;
+    height: 28px;
+    border-radius: 99px;
+    background-color: var(--green);
+}
+
+/* the white button on the right side of the switch */
+.switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .tiles {
+        grid-template-columns: 1fr;
+    }
 }

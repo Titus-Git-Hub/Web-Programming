@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-text="uni.pageTitle">Uni – Titus Richter</title>
+    <meta name="description" content="Das Studium von Titus Richter an der Leuphana Universität Lüneburg.">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a class="back-link" href="index.html" data-text="nav.backToMap">‹ Karte</a>
+        <span class="navbar-title" data-text="uni.title">Uni</span>
+        <div class="segment">
+            <button class="lang-button active" type="button" data-lang="de">DE</button>
+            <button class="lang-button" type="button" data-lang="en">EN</button>
+        </div>
+    </header>
+
+    <div class="map-strip">
+        <!-- map drawing again -->
+        <svg viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice">
+            <rect width="1440" height="280" fill="#efeff4"/>
+            <ellipse cx="300" cy="56" rx="320" ry="96" fill="#e4efd8"/>
+            <ellipse cx="1150" cy="236" rx="300" ry="90" fill="#e4efd8"/>
+            <path d="M-20,136 C280,160 540,110 860,130 C1080,144 1250,168 1460,158" stroke="#dceaf6" stroke-width="20" fill="none"/>
+            <g fill="#e4e4ea">
+                <rect x="470" y="170" width="150" height="66" rx="6"/>
+                <rect x="880" y="30" width="126" height="64" rx="6"/>
+                <rect x="1050" y="40" width="96" height="58" rx="6"/>
+                <rect x="190" y="180" width="118" height="62" rx="6"/>
+            </g>
+            <g stroke="#ffffff" fill="none" stroke-linecap="round">
+                <path d="M-20,204 L1460,186" stroke-width="15"/>
+                <path d="M720,-20 C738,100 708,200 730,300" stroke-width="16"/>
+                <path d="M1180,-20 C1166,100 1190,200 1174,300" stroke-width="10"/>
+                <path d="M380,-20 L398,300" stroke-width="9"/>
+            </g>
+            <text x="40" y="128" font-family="Manrope" font-size="12" fill="#5b87ad">Ilmenau</text>
+        </svg>
+        <span class="map-source" data-text="uni.mapSource">Lüneburg</span>
+        <div class="location">
+            <span class="location-area"></span>
+            <span class="location-pulse"></span>
+            <span class="location-pulse delayed"></span>
+            <span class="location-dot"><i class="fa-solid fa-graduation-cap"></i></span>
+        </div>
+    </div>
+
+    <div class="sheet">
+        <div class="grip"></div>
+        <h1 data-text="uni.title">Uni</h1>
+        <p class="address" data-text="uni.address">Leuphana Universität<br>Lüneburg</p>
+        <div class="meta">
+            <span data-text="uni.since">seit 2024</span>
+            <span class="pill" data-text="uni.status">eingeschrieben</span>
+        </div>
+    </div>
+
+    <!-- Anchor links -->
+    <div class="tabs">
+        <nav>
+            <a class="tab active" href="#digitale-medien" data-text="uni.main">Hauptstudium</a>
+            <a class="tab" href="#ibae" data-text="uni.additional">Zusatzstudium</a>
+        </nav>
+    </div>
+
+    <main class="content">
+
+        <!-- ===================== Main degree ===================== -->
+        <section id="digitale-medien">
+            <div class="card study">
+                <div class="study-header">
+                    <span class="study-icon bg-blue"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <div>
+                        <h2 data-text="uni.mainName">Digitale Medien &amp; Wirtschaftspsychologie</h2>
+                        <span class="study-type" data-text="uni.mainType">Hauptstudium · Leuphana Universität Lüneburg</span>
+                    </div>
+                    <!-- live-dot = the green dot with the pulse coming from the CSS (::after) -->
+                    <span class="study-date"><span class="live-dot"></span><span data-text="about.since2024">2024 – heute</span></span>
+                </div>
+
+                <!-- For each row: label on the left, value on the right (view CSS)-->
+                <div class="facts">
+                    <div class="fact"><span data-text="uni.university">Hochschule</span><span>Leuphana Universität Lüneburg</span></div>
+                    <div class="fact"><span data-text="uni.major">Hauptfach</span><span data-text="uni.majorName">Digitale Medien</span></div>
+                    <div class="fact"><span data-text="uni.minor">Nebenfach</span><span data-text="uni.minorName">Wirtschaftspsychologie</span></div>
+                    <div class="fact"><span data-text="uni.start">Beginn</span><span>2024</span></div>
+                </div>
+
+                <div class="text-card">
+                    <div class="text-block">
+                        <h3 data-text="uni.hopedTitle">Was ich mir erhofft habe</h3>
+                        <p data-text="uni.mainHoped">Ursprünglich wollte ich vor allem in Richtung Wirtschaftspsychologie gehen. Da ich ein zweites Fach dazu wählen musste, habe ich mich für Digitale Medien entschieden. Davon habe ich mir vor allem praktische Einblicke erhofft, die in einer immer stärker digitalisierten Welt weiterhelfen.</p>
+                    </div>
+                    <div class="text-block">
+                        <h3 data-text="uni.soFarTitle">Wie es bisher ist</h3>
+                        <p data-text="uni.mainSoFar">Im Grunde bin ich mit meinem Studium sehr zufrieden. Gleichzeitig merke ich, wie viel mir die Arbeit zusätzlich gebracht hat. Sie zeigt mir andere Seiten und ich kann das, was ich im Studium lerne, direkt mit dem vergleichen, was ich im Job erlebe.</p>
+                    </div>
+                    <div class="text-block">
+                        <h3 data-text="uni.learnedTitle">Was ich mitgenommen habe</h3>
+                        <p data-text="uni.mainLearned">Vom Interesse her haben mir vor allem die technischen Kurse zugesagt, zum Beispiel ein Python-Modul aus dem zweiten Semester. In letzter Zeit ziehen mich aber auch besonders die Module rund um KI an. Das Thema ist so unfassbar wegweisend und wird unsere Gesellschaft in vielen Bereichen noch weiter auf den Kopf stellen. Deshalb möchte ich mich so intensiv wie möglich damit beschäftigen. Und wie gesagt nehme ich das Wissen aus den Uni-Modulen auch in andere Lebensbereiche mit, wie in die Freizeit oder auf die Arbeit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================== Additional degree ===================== -->
+        <section id="ibae">
+            <div class="card study">
+                <div class="study-header">
+                    <span class="study-icon bg-orange"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <div>
+                        <h2>International Business Administration &amp; Entrepreneurship</h2>
+                        <span class="study-type" data-text="uni.additionalType">Zusatzstudium · Leuphana Universität Lüneburg</span>
+                    </div>
+                    <span class="study-date"><span class="live-dot"></span><span data-text="about.since2026">2026 – heute</span></span>
+                </div>
+
+                <div class="facts">
+                    <div class="fact"><span data-text="uni.university">Hochschule</span><span>Leuphana Universität Lüneburg</span></div>
+                    <div class="fact"><span data-text="uni.type">Art</span><span data-text="uni.additional">Zusatzstudium</span></div>
+                    <div class="fact"><span data-text="uni.start">Beginn</span><span>2026</span></div>
+                </div>
+
+                <div class="text-card">
+                    <div class="text-block">
+                        <h3 data-text="uni.hopedTitle">Was ich mir erhofft habe</h3>
+                        <p data-text="uni.additionalHoped">Vor allem im wirtschaftlichen Bereich möchte ich mich noch breiter aufstellen, denn der kommt bei mir aktuell noch zu kurz. Zum einen ist Wirtschaft ein weiteres Interessengebiet von mir. Zum anderen ist es aber auch Wissen, das sich später auszahlt, gerade wenn man irgendwann ein eigenes Business führen möchte.</p>
+                    </div>
+                    <div class="text-block">
+                        <h3 data-text="uni.soFarTitle">Wie es bisher ist</h3>
+                        <p data-text="uni.additionalSoFar">Da ich mit dem Studium gerade erst richtig beginne, werde ich diesen Bereich erst im Laufe der Zeit weiter ergänzen können.</p>
+                    </div>
+                    <div class="text-block">
+                        <h3 data-text="uni.learnedTitle">Was ich mitgenommen habe</h3>
+                        <p data-text="uni.additionalLearned">TBD</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

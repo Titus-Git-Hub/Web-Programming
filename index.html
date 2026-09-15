@@ -1,186 +1,371 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!-- Standard Website language -->
+<html lang="de">
 <head>
+    <!-- Character set for ä, ö, ü being displayed correctly -->
     <meta charset="UTF-8">
+    <!-- Page adjusting to the screen width (important for mobile view) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This is the personal Website of Titus Richter">
-    <meta name="author" content="Titus Richter">
-    <title>Titus Richter: CV Webpage</title>
+    <!-- Title in browser tab -->
+    <title data-text="home.pageTitle">Wo ist Titus?</title>
+    <!-- Descriptions for Search Engines -->
+    <meta name="description" content="Lebenslauf von Titus Richter: Uni, Arbeit und vieles mehr">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fraunces:wght@400&display=swap" rel="stylesheet">
+    <!-- Loading fonts via Google Fonts
+         Syne = Headings, Manrope = Body text, JetBrains Mono = Small labels -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
     <!-- The Font Awesome icon library is used for styling icons across the page -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <link href="styles.css" rel="stylesheet">
+    <!-- loading a separate .css file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="about-me.html">About</a></li>
-            <li><a>CV <i class="fa-solid fa-download"></i></a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul>
-    </nav>
+<!-- class="map-page": deactivate scrolling on the homepage; Start page in styles.css -->
+<body class="map-page">
 
-    <header class="hero">
-        <button id="myButton" class="badge">Working Student for Homepage Helden &rarr;</button>
-        <div class="display_text hideP">
-            <div class="modal-box">
-                <button id="closeBtn">✕</button>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsa consectetur, quo ex repellendus quam voluptatem, architecto natus officiis vero beatae voluptates ut. Quis nam eos quasi omnis minus saepe.</p>
-                <a href="working-student.html">Read more →</a>
-            </div>
+    <!-- The Map (drawn by Claude) -->
+    <main class="map">
+
+        <!-- viewBox = Draws 1440 × 810. preserveAspectRatio="xMidYMid slice" = The map always
+             fills the entire window and is cropped at the edges. -->
+        <!-- Hand-drawn map (SVG): water, parks, blocks and streets -->
+        <svg class="map-background" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice">
+            <rect width="1440" height="810" fill="#efeff4"/>
+
+            <!-- Water -->
+            <path d="M-40,96 C240,58 520,132 820,112 C1080,94 1280,128 1480,104 L1480,-40 L-40,-40 Z" fill="#dceaf6"/>
+
+            <!-- Parks -->
+            <ellipse cx="170" cy="716" rx="250" ry="132" fill="#e4efd8"/>
+            <ellipse cx="1268" cy="336" rx="196" ry="118" fill="#e4efd8"/>
+            <ellipse cx="690" cy="768" rx="188" ry="92" fill="#e4efd8"/>
+
+            <!-- Blocks -->
+            <!-- rect = Rectangle, rx = rounded corners -->
+            <g fill="#e4e4ea">
+                <rect x="318" y="214" width="128" height="96" rx="6"/>
+                <rect x="530" y="226" width="152" height="86" rx="6"/>
+                <rect x="806" y="208" width="106" height="102" rx="6"/>
+                <rect x="1012" y="222" width="138" height="90" rx="6"/>
+                <rect x="330" y="452" width="118" height="104" rx="6"/>
+                <rect x="544" y="466" width="150" height="92" rx="6"/>
+                <rect x="812" y="448" width="104" height="110" rx="6"/>
+                <rect x="1028" y="462" width="132" height="96" rx="6"/>
+                <rect x="106" y="238" width="122" height="88" rx="6"/>
+                <rect x="118" y="464" width="110" height="92" rx="6"/>
+            </g>
+
+            <!-- Streets -->
+            <!-- stroke-width = Road width -->
+            <g stroke="#ffffff" fill="none" stroke-linecap="round">
+                <path d="M-40,362 C280,344 600,392 940,372 C1160,358 1300,380 1480,368" stroke-width="20"/>
+                <path d="M-40,614 C300,640 620,592 960,614 C1180,628 1320,612 1480,620" stroke-width="15"/>
+                <path d="M262,-40 C282,240 254,540 278,850" stroke-width="16"/>
+                <path d="M746,-40 C724,260 764,540 738,850" stroke-width="18"/>
+                <path d="M978,-40 C996,240 970,540 992,850" stroke-width="12"/>
+                <path d="M1206,-40 C1220,260 1196,540 1214,850" stroke-width="10"/>
+                <path d="M-40,168 C300,158 620,196 960,180 C1180,170 1320,188 1480,178" stroke-width="9"/>
+                <path d="M-40,742 C300,752 620,722 960,738 C1180,748 1320,734 1480,742" stroke-width="9"/>
+            </g>
+        </svg>
+
+        <!-- The question on the top left -->
+        <span class="map-question" data-text="home.question">WO IST TITUS?</span>
+
+        <!-- Language Selector. data-lang tells script.js, which language to load.
+             "active" = current selection -->
+        <div class="map-language segment">
+            <button class="lang-button active" type="button" data-lang="de">DE</button>
+            <button class="lang-button" type="button" data-lang="en">EN</button>
         </div>
-        <h1>Hi, it's Titus here.</h1>
-        <p>I'm a student at Leuphana University and am currently developing some webprogramming skills. This page is going to develop in the upcoming weeks.</p>
-    </header>
 
-    <main>
-        <section id="about" class="section">
-            <h2>About me</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </p>
+        <!-- The decoration: (the north arrow down left and the scale down right) -->
+        <div class="map-north"><i class="fa-solid fa-caret-up"></i><br>N</div>
+        <div class="map-scale">10 km</div>
 
-            <div class="text-image-row">
-                <div class="col">
-                    <div class="img-placeholder">
-                        <p>Placeholder</p>
-                        <p>Good Picture TBD</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <h3>This is the text side</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-                    </p>
-                    <p>
-                        Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
-                    </p>
-                    <a href="about-me.html">Read more →</a>
-                </div>
-            </div>
-        </section>
+        <!-- Display the places on the map as Buttons.
+             data-open="popup-work" → script.js opens the element with id="popup-work".
+             id="place-work" is the position on the map which is noted in styles.css -->
+        <button class="place" id="place-work" type="button" data-open="popup-work">
+            <span class="place-circle"><i class="fa-solid fa-briefcase"></i></span>
+            <span class="place-city">HAMBURG</span>
+            <span class="place-name" data-text="home.work">Arbeit</span>
+        </button>
 
-        <section id="cv" class="section">
-            <h2>CV</h2>
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque cum vel ullam repellat incidunt illum nihil consectetur nisi est debitis tempore voluptas labore, blanditiis rerum ipsum. Quam quas accusamus cum!
-            </p>
-            <a>Download here <i class="fa-solid fa-download"></i></a>
-        </section>
+        <!-- same structure here -->
+        <button class="place" id="place-uni" type="button" data-open="popup-uni">
+            <span class="place-circle"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span class="place-city">LÜNEBURG</span>
+            <span class="place-name" data-text="home.uni">Uni</span>
+        </button>
 
-        <section id="projects" class="section">
-            <h2>Projects</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </p>
+        <!-- Me in the middle -->
+        <!-- field and rings green, can be seen in styles.css in Location dot -->
+        <div class="me green">
+            <!-- a bright field and two pulsating rings, more on that in styles.css -->
+            <span class="location-area"></span>
+            <span class="location-pulse"></span>
+            <span class="location-pulse delayed"></span>
 
-            <div class="text-image-row">
-                <div class="col">
-                    <div class="img-placeholder project-img">
-                        <p>Placeholder</p>
-                        <p>Project Image</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <h3>Project 1</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="projects.html">Read more →</a>
-                </div>
-            </div>
+            <!-- A picture of me for my profile, which opens my Popup. -->
+            <!-- aria-label as Button description for screenreader -->
+            <button class="me-button" type="button" data-open="popup-me" aria-label="Titus Richter">
+                <!-- alt text if the image isn't loading and also out of SEO reasons -->
+                <span class="photo"><img src="images/profile.jpg" alt="Titus Richter Profile Picture"></span>
+            </button>
 
-            <div class="text-image-row reverse">
-                <div class="col">
-                    <h3>Project 2</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="projects.html">Read more →</a>
-                </div>
-                <div class="col">
-                    <div class="img-placeholder project-img">
-                        <p>Placeholder</p>
-                        <p>Project Image</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-image-row">
-                <div class="col">
-                    <div class="img-placeholder project-img">
-                        <p>Placeholder</p>
-                        <p>Project Image</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <h3>Project 3</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="projects.html">Read more →</a>
-                </div>
-            </div>
-
-            <div class="toolbar">
-                <a href="projects.html">All Projects</a>
-            </div>
-        </section>
-
-        <section id="blog" class="section">
-        <h2>Blog</h2>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <div class="blog-img img-placeholder">
-                    <p>Blog Image</p>
-                </div>
-                <h3 class="blog-title">Blog Post Title 1</h3>
-            </div>
-            <div class="blog-card">
-                <div class="blog-img img-placeholder">
-                    <p>Blog Image</p>
-                </div>
-                <h3 class="blog-title">Blog Post Title 2</h3>
-            </div>
-            <div class="blog-card">
-                <div class="blog-img img-placeholder">
-                    <p>Blog Image</p>
-                </div>
-                <h3 class="blog-title">Blog Post Title 3</h3>
-            </div>
+            <!-- only "unterwegs" has data-text, as the name keeps the same in both languages -->
+            <h1 class="me-label">
+                <button type="button" data-open="popup-me">Titus Richter · <span data-text="home.status">unterwegs</span></button>
+            </h1>
         </div>
-        <div class="toolbar">
-            <a href="blog.html">All Posts</a>
-        </div>
-    </section>
+
     </main>
 
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="about-me.html"><i class="fa-solid fa-user"></i> About</a>
-                <a><i class="fa-solid fa-file"></i> CV</a>
-                <a href="projects.html"><i class="fa-solid fa-folder"></i> Projects</a>
+
+    <!-- ===================== Popup: Work ===================== -->
+    <!-- class="display_text hideP": Hidden at first...
+         id="popup-work" connected to data-open="popup-work" at "Arbeit" -->
+    <div class="display_text hideP" id="popup-work">
+        <!-- the popup window for work -->
+        <div class="popup">
+     
+            <div class="popup-header">
+                <!-- data-close: script.js closes the Popups -->
+                <button class="text-button" type="button" data-close data-text="nav.backToMap">‹ Karte</button>
+                <span class="navbar-title" data-text="work.title">Arbeit</span>
+                <!-- I wanted to integrate a second language switcher here in the pop up (for the function but also as for the design ). Same as the one on the map... -->
+                <div class="segment">
+                    <button class="lang-button active" type="button" data-lang="de">DE</button>
+                    <button class="lang-button" type="button" data-lang="en">EN</button>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <a href="https://www.instagram.com/t.rchtr_/"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/Titus-Git-Hub"><i class="fa-brands fa-github"></i> GitHub</a>
-                <a href="xxx"><i class="fa-solid fa-envelope"></i> Email</a>
+
+            <!-- Map for the pop up -->
+            <div class="map-strip">
+                <!-- I asked Claude to generate an equal map for the pop up as for the overall map -->
+                <svg viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice">
+                    <rect width="1440" height="280" fill="#efeff4"/>
+                    <path d="M-20,70 C300,40 620,108 960,92 C1180,82 1320,104 1460,90 L1460,-20 L-20,-20 Z" fill="#dceaf6"/>
+                    <ellipse cx="200" cy="250" rx="260" ry="80" fill="#e4efd8"/>
+                    <ellipse cx="1260" cy="236" rx="220" ry="74" fill="#e4efd8"/>
+                    <g stroke="#ffffff" fill="none" stroke-linecap="round">
+                        <path d="M-20,124 C400,112 900,134 1460,120" stroke-width="15"/>
+                        <path d="M-20,230 L1460,218" stroke-width="12"/>
+                        <path d="M640,60 C656,140 628,220 648,300" stroke-width="16"/>
+                    </g>
+                </svg>
+                <!-- Detail with the place down in the right corner on the map -->
+                <span class="map-source" data-text="work.mapSource">Hamburg</span>
+                <!-- The Location point... It's the same principle here as for the pulsing on the overall map for my profile button, but with different coloring -->
+                <div class="location">
+                    <span class="location-area"></span>
+                    <span class="location-pulse"></span>
+                    <span class="location-pulse delayed"></span>
+                    <span class="location-dot"><i class="fa-solid fa-briefcase"></i></span>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>More</h4>
-                <a href="working-student.html"><i class="fa-solid fa-briefcase"></i> Working Student</a>
-                <a href="university.html"><i class="fa-solid fa-graduation-cap"></i> University</a>
-                <a href="blog.html"><i class="fa-solid fa-pen"></i> Blog</a>
+
+            <!-- The white window below the map -->
+            <div class="popup-sheet">
+                <!-- The gray line as a decorative element and reference -->
+                <div class="grip"></div>
+                <div class="popup-top">
+                    <div>
+                        <h2 data-text="work.title">Arbeit</h2>
+                        <p class="address" data-text="work.address">Webdesign-Agentur<br>Hamburg</p>
+                        <div class="meta">
+                            <span data-text="work.since">seit 2025</span>
+                            <!-- The green Status Element -->
+                            <span class="pill" data-text="work.status">angestellt</span>
+                        </div>
+                    </div>
+                    <!-- ✕-Button; fa-solid for the style "filled out" and fa-xmark for "the x icon" -->
+                    <button class="close-button" type="button" data-close aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- This is about the two tiles leaning against each other, only differing in content while the structure is the same, covering the “Where is design” again. Then I thought of how to have a good linking structure and in general how to separate the content, fortunately I remembered that using anchor links might be the perfect option => I only have three subpages but still links that kind of show different content... -->
+                <div class="tiles">
+                    <a class="tile" href="working-student.html#aufgaben">
+                        <span class="icon bg-blue"><i class="fa-solid fa-list-check"></i></span>
+                        <span class="tile-title" data-text="work.tasks">Aufgaben</span>
+                        <span class="tile-text" data-text="work.tasksText">Wofür ich zuständig bin</span>
+                    </a>
+                    <a class="tile" href="working-student.html#werkzeuge">
+                        <span class="icon bg-purple"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                        <span class="tile-title" data-text="work.tools">Werkzeuge</span>
+                        <span class="tile-text" data-text="work.toolsText">11 im Einsatz</span>
+                    </a>
+                </div>
+
+                <!-- Below that, in keeping with the style, there had to be a wider tile. 
+                     "tile-body" is for the title and text combination, "switch" is an idea Claude mentioned to integrate which I thought of as a nice idea, even though it's just styling and no other function -->
+                <a class="tile wide" href="about-me.html#kontakt">
+                    <span class="icon bg-green"><i class="fa-solid fa-handshake"></i></span>
+                    <span class="tile-body">
+                        <span class="tile-title" data-text="popup.internship">Offen für Praktikum</span>
+                        <span class="tile-text" data-text="work.internshipText">Ab sofort erreichbar</span>
+                    </span>
+                    <span class="switch"></span>
+                </a>
             </div>
+
         </div>
-    </footer>
+    </div>
 
+
+    <!-- ===================== Popup: University ===================== -->
+    <!-- It's the same structure here as for the pop up "Arbeit" but with different content, a different map Claude made and of course other icons -->
+    <div class="display_text hideP" id="popup-uni">
+        <div class="popup">
+
+            <div class="popup-header">
+                <button class="text-button" type="button" data-close data-text="nav.backToMap">‹ Karte</button>
+                <span class="navbar-title" data-text="uni.title">Uni</span>
+                <div class="segment">
+                    <button class="lang-button active" type="button" data-lang="de">DE</button>
+                    <button class="lang-button" type="button" data-lang="en">EN</button>
+                </div>
+            </div>
+
+            <div class="map-strip">
+                <svg viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice">
+                    <rect width="1440" height="280" fill="#efeff4"/>
+                    <ellipse cx="300" cy="56" rx="320" ry="96" fill="#e4efd8"/>
+                    <ellipse cx="1150" cy="236" rx="300" ry="90" fill="#e4efd8"/>
+                    <path d="M-20,136 C280,160 540,110 860,130 C1080,144 1250,168 1460,158" stroke="#dceaf6" stroke-width="20" fill="none"/>
+                    <g stroke="#ffffff" fill="none" stroke-linecap="round">
+                        <path d="M-20,204 L1460,186" stroke-width="15"/>
+                        <path d="M720,-20 C738,100 708,200 730,300" stroke-width="16"/>
+                    </g>
+                </svg>
+                <span class="map-source" data-text="uni.mapSource">Lüneburg</span>
+                <div class="location">
+                    <span class="location-area"></span>
+                    <span class="location-pulse"></span>
+                    <span class="location-pulse delayed"></span>
+                    <span class="location-dot"><i class="fa-solid fa-graduation-cap"></i></span>
+                </div>
+            </div>
+
+            <div class="popup-sheet">
+                <div class="grip"></div>
+                <div class="popup-top">
+                    <div>
+                        <h2 data-text="uni.title">Uni</h2>
+                        <p class="address" data-text="uni.address">Leuphana Universität<br>Lüneburg</p>
+                        <div class="meta">
+                            <span data-text="uni.since">seit 2024</span>
+                            <span class="pill" data-text="uni.status">eingeschrieben</span>
+                        </div>
+                    </div>
+                    <button class="close-button" type="button" data-close aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="tiles">
+                    <a class="tile" href="university.html#digitale-medien">
+                        <span class="icon bg-blue"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <!-- "&" as "&amp;" in HTML as we have learned it in one of our sessions -->
+                        <span class="tile-title" data-text="uni.mainName">Digitale Medien &amp; Wirtschaftspsychologie</span>
+                        <span class="tile-text" data-text="uni.main">Hauptstudium</span>
+                    </a>
+                    <!-- Here the title again has no data-text, as the name is again the same in English and German -->
+                    <a class="tile" href="university.html#ibae">
+                        <span class="icon bg-orange"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span class="tile-title">International Business Administration &amp; Entrepreneurship</span>
+                        <span class="tile-text" data-text="uni.additional">Zusatzstudium</span>
+                    </a>
+                </div>
+
+                <a class="tile wide" href="about-me.html#kontakt">
+                    <span class="icon bg-green"><i class="fa-solid fa-handshake"></i></span>
+                    <span class="tile-body">
+                        <span class="tile-title" data-text="popup.internship">Offen für Praktikum</span>
+                        <span class="tile-text" data-text="popup.internshipText">Und für Berufseinstieg</span>
+                    </span>
+                    <span class="switch"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ===================== Popup: Me ===================== -->
+    <!-- And again, it's the same structure here as for the pop up "Arbeit" but with different content, the same map Claude made for Lüneburg, the green location (class="location green") here instead of the blue one, and of course also no icon but my profile picture again. -->
+    <div class="display_text hideP" id="popup-me">
+        <div class="popup">
+
+            <div class="popup-header">
+                <button class="text-button" type="button" data-close data-text="nav.backToMap">‹ Karte</button>
+                <span class="navbar-title">Titus Richter</span>
+                <div class="segment">
+                    <button class="lang-button active" type="button" data-lang="de">DE</button>
+                    <button class="lang-button" type="button" data-lang="en">EN</button>
+                </div>
+            </div>
+
+            <div class="map-strip">
+                <svg viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid slice">
+                    <rect width="1440" height="280" fill="#efeff4"/>
+                    <ellipse cx="260" cy="60" rx="300" ry="96" fill="#e4efd8"/>
+                    <ellipse cx="1180" cy="236" rx="280" ry="92" fill="#e4efd8"/>
+                    <path d="M-20,130 C300,150 520,104 860,126 C1080,140 1240,168 1460,156" stroke="#dceaf6" stroke-width="20" fill="none"/>
+                    <g stroke="#ffffff" fill="none" stroke-linecap="round">
+                        <path d="M-20,196 L1460,176" stroke-width="16"/>
+                        <path d="M600,-20 C618,100 590,200 612,300" stroke-width="16"/>
+                    </g>
+                </svg>
+                <span class="map-source" data-text="me.mapSource">Lüneburg</span>
+                <div class="location green">
+                    <span class="location-area"></span>
+                    <span class="location-pulse"></span>
+                    <span class="location-pulse delayed"></span>
+                    <span class="photo"><img src="images/profile.jpg" alt="Titus Richter"></span>
+                </div>
+            </div>
+
+            <div class="popup-sheet">
+                <div class="grip"></div>
+                <div class="popup-top">
+                    <div>
+                        <h2>Titus Richter</h2>
+                        <p class="address" data-text="me.address">Lüneburg<br>Student &amp; Werkstudent</p>
+                        <div class="meta">
+                            <span data-text="me.updated">zuletzt aktualisiert: September 2026</span>
+                            <span class="pill" data-text="me.status">erreichbar</span>
+                        </div>
+                    </div>
+                    <button class="close-button" type="button" data-close aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="tiles">
+                    <a class="tile" href="about-me.html#lebenslauf">
+                        <span class="icon bg-blue"><i class="fa-solid fa-file-lines"></i></span>
+                        <span class="tile-title" data-text="me.cv">Lebenslauf</span>
+                        <span class="tile-text" data-text="me.cvText">Stationen mit Zeiträumen</span>
+                    </a>
+                    <a class="tile" href="about-me.html#kontakt">
+                        <span class="icon bg-orange"><i class="fa-solid fa-envelope"></i></span>
+                        <span class="tile-title" data-text="me.contact">Kontakt</span>
+                        <span class="tile-text" data-text="me.contactText">E-Mail, LinkedIn, GitHub</span>
+                    </a>
+                </div>
+
+                <a class="tile wide" href="about-me.html#kontakt">
+                    <span class="icon bg-green"><i class="fa-solid fa-handshake"></i></span>
+                    <span class="tile-body">
+                        <span class="tile-title" data-text="popup.internship">Offen für Praktikum</span>
+                        <span class="tile-text" data-text="popup.internshipText">Und für Berufseinstieg</span>
+                    </span>
+                    <span class="switch"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- The JavaScript is being loaded in the end, so that all elements exist, as the script is looking for them -->
     <script src="script.js"></script>
-
 </body>
-
 </html>
