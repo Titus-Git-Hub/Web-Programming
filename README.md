@@ -40,6 +40,9 @@ In my opinion AI helped me reach a better result... not as a shortcut where I ha
 
 I hope this transparent approach is understandable and of course I hope my website makes you smile (:   :)
 
+**Outlook**
+I had a lot of fun building this website, and I don't think this is the final version. For now I'm pretty happy with it, also as a final assignment. Still, I plan to keep developing it, and I'm grateful for every comment and tip that helps me get the most out of this project.
+
 ## Inspirations
 
 **Current version**
